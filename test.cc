@@ -1,6 +1,7 @@
 #include "AryList.hh"
 
 class Int_ArrayList : public ArrayList{
+  public:
 	Int_ArrayList(){
 	    ary_list_size = DEFAULT_ARRAY_SIZE;
 	    int malloc_size = sizeof(int)*ary_list_size;
