@@ -26,7 +26,6 @@ class ArrayList{
     protected:
 	void* ary_list_p;
 	int ary_list_size;
-
     public:
 	ArrayList(){
 	}
