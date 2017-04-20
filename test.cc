@@ -1,6 +1,7 @@
 #include "AryList.hh"
 
 int main(){
+    std::cout << "---------------Int ArrayList -------------------" << std::endl;
     /* int ary */
     Int_ArrayList int_list;
 
@@ -16,6 +17,13 @@ int main(){
 
     int_list.for_each_print();
 
+    int_list.swap_list(22,12);
+    int_list.for_each_print();
+
+    int_list.reset();
+    int_list.for_each_print();
+
+    std::cout << std::endl << "---------------Str ArrayList -------------------" << std::endl;
 
     /* string(define max size) ary */
     Str_ArrayList str_list; 
@@ -29,10 +37,18 @@ int main(){
     str_list.put(10,"12345678901234567890123456789012345678901234567890");
     str_list.for_each_print();
 
+    str_list.swap_list(10,12); 
+    str_list.for_each_print();
+
+    str_list.get(21);
+
     str_list.put(10,"reset data");
     str_list.for_each_print();
 
     str_list.put(20,"max_data input!"); 
+    str_list.for_each_print();
+
+    str_list.reset();
     str_list.for_each_print();
     return 0; 
 }
