@@ -9,7 +9,7 @@
 #define DEFAULT_ARRAY_SIZE 5
 #define PRINT_INTERVAL 10
 
-class ArrayList{
+class Array{
     private:
 	int type_size; 
 
@@ -30,19 +30,19 @@ class ArrayList{
 	void* ary_list_p;
 	int ary_list_size;
     public:
-	ArrayList(){}; 
-	ArrayList(unsigned int size_of_type){
+	Array(){}; 
+	Array(unsigned int size_of_type){
 	    ary_list_p = NULL;
 	    ary_list_size = 0; 
 	    type_size = size_of_type;
 	    allocator(DEFAULT_ARRAY_SIZE); 
 	}
-	ArrayList(const ArrayList&){}
-	virtual ~ArrayList(){
+	Array(const Array&){}
+	virtual ~Array(){
 	    if(ary_list_p)
 		free(ary_list_p); 
 	}
-	ArrayList& operator=(const ArrayList&){}
+	Array& operator=(const Array&){}
 
 	virtual void for_each_print()=0;
 	void swap_list(unsigned int idx1, unsigned int idx2){
@@ -63,21 +63,21 @@ class ArrayList{
 	}
 };
 
-class Int_ArrayList : public ArrayList{
+class Int_Array : public Array{
     private:
 	int* int_ary_list_p;
 
     public:
-	Int_ArrayList() : ArrayList(sizeof(int))
+	Int_Array() : Array(sizeof(int))
 	{
 	    int_ary_list_p = (int*)ary_list_p;
 	}
-	~Int_ArrayList(){}
-	Int_ArrayList(const Int_ArrayList&){}
-	Int_ArrayList& operator=(const Int_ArrayList&);
+	~Int_Array(){}
+	Int_Array(const Int_Array&){}
+	Int_Array& operator=(const Int_Array&);
 
         int get(unsigned int idx){
-	    if(ArrayList::get(idx) != -1)
+	    if(Array::get(idx) != -1)
 	    std::cout << "[RET] " << idx << "th value : " << int_ary_list_p[idx] << std::endl;
  	    return 0; 
 	}
@@ -90,7 +90,7 @@ class Int_ArrayList : public ArrayList{
 	    temp=int_ary_list_p[idx1];
 	    int_ary_list_p[idx1] = int_ary_list_p[idx2];
 	    int_ary_list_p[idx2] = temp; 
-	    ArrayList::swap_list(idx1, idx2); 
+	    Array::swap_list(idx1, idx2); 
 	}
 	void for_each_print(){
 	    for(int i=0; i<ary_list_size; i++){
@@ -104,21 +104,21 @@ class Int_ArrayList : public ArrayList{
 
 #define MAX_STR_SIZE 24
 
-class Str_ArrayList : public ArrayList{
+class Str_Array : public Array{
     private:
 	char* str_ary_list_p;
 
     public:
-	Str_ArrayList() : ArrayList(MAX_STR_SIZE)
+	Str_Array() : Array(MAX_STR_SIZE)
 	{
 	    str_ary_list_p = (char*)ary_list_p;
 	}
-	~Str_ArrayList(){}
-	Str_ArrayList(const Str_ArrayList&){}
-	Str_ArrayList& operator=(const Str_ArrayList&);
+	~Str_Array(){}
+	Str_Array(const Str_Array&){}
+	Str_Array& operator=(const Str_Array&);
 
         int get(unsigned int idx){
-	    if(ArrayList::get(idx) != -1)
+	    if(Array::get(idx) != -1)
 	    std::cout << "[RET] " << idx << "th value : " << str_ary_list_p+(idx*MAX_STR_SIZE) << std::endl;
  	    return 0; 
 	}
@@ -133,7 +133,7 @@ class Str_ArrayList : public ArrayList{
 	    char* temp=str1;
 	    strncpy(str1, str2, MAX_STR_SIZE); 
 	    strncpy(str2, temp , MAX_STR_SIZE); 
-	    ArrayList::swap_list(idx1, idx2); 
+	    Array::swap_list(idx1, idx2); 
 	}
 	void for_each_print(){
 	    for(int i=0; i<ary_list_size; i++){
