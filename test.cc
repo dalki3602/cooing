@@ -1,32 +1,11 @@
 #include "AryList.hh"
+#include <list>
 
 int main(){
-    std::cout << "---------------Int ArrayList -------------------" << std::endl;
-    /* int ary */
-    Int_ArrayList int_list;
-
-    int_list.put(2,3);
-    int_list.resize(12); 
-    int_list.put(11,100);
-
-    int_list.get(14);
-    int_list.get(11);
-
-    int_list.put(12,200);
-    int_list.put(22,300);
-
-    int_list.for_each_print();
-
-    int_list.swap_list(22,12);
-    int_list.for_each_print();
-
-    int_list.reset();
-    int_list.for_each_print();
-
-    std::cout << std::endl << "---------------Str ArrayList -------------------" << std::endl;
+    std::cout << std::endl << "--------------- Str Array -------------------" << std::endl;
 
     /* string(define max size) ary */
-    Str_ArrayList str_list; 
+    Str_Array str_list; 
     str_list.put(1,"first test"); 
     str_list.put(2,"Second test"); 
     str_list.put(9,"9th test"); 
@@ -50,6 +29,66 @@ int main(){
 
     str_list.reset();
     str_list.for_each_print();
+
+    std::cout << "--------------- Int Array -------------------" << std::endl;
+    /* int ary */
+    Int_Array int_list;
+
+    int_list.put(2,3);
+    int_list.resize(12); 
+    int_list.put(11,100);
+
+    int_list.get(14);
+    int_list.get(11);
+
+    int_list.put(12,200);
+    int_list.put(22,300);
+
+    int_list.for_each_print();
+
+    int_list.swap_list(22,12);
+    int_list.for_each_print();
+
+    //int_list.reset();
+    //int_list.for_each_print();
+
+
+    std::cout << std::endl << "--------------- Array -------------------" << std::endl;
+#if 0
+    //typedef std::list <Int_Array*> int_ary_list;
+    using int_ary_list = std::list <Int_Array*>;
+    int_ary_list instance; 
+#else
+    std::list <Int_Array*> instance;
+#endif
+
+    Int_Array int_list2(int_list);
+
+    instance.push_front(&int_list);
+    instance.push_front(&int_list2);
+
+#if 0
+    for(int_ary_list::iterator listMyClassIter = instance.begin(); // not int_ary_list.begin()
+	        listMyClassIter != instance.end(); 
+		    listMyClassIter ++)
+    {
+	    (*listMyClassIter)->for_each_print();  
+    }
+#else
+   int cnt =0; 
+   for(Int_Array* i: instance)
+    {
+#if 1
+	if(!cnt) // for test
+	{
+	    i->swap_list(12,22);
+	}
+	cnt++; 
+#endif
+
+	i->for_each_print();  
+    }
+#endif
     return 0; 
 }
 
