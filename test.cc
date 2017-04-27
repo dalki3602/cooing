@@ -52,7 +52,6 @@ int main(){
     //int_list.reset();
     //int_list.for_each_print();
 
-
     std::cout << std::endl << "--------------- Array -------------------" << std::endl;
 #if 0
     //typedef std::list <Int_Array*> int_ary_list;
@@ -81,7 +80,7 @@ int main(){
 #if 1
 	if(!cnt) // for test
 	{
-	    i->swap_list(12,22);
+	    i->swap_list(22,12);
 	}
 	cnt++; 
 #endif
