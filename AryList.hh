@@ -17,6 +17,7 @@ class Array{
     public:
 	Array();
 	Array(unsigned int size_of_type);
+	Array(unsigned int size_of_type, unsigned int list_size);
 	Array(const Array&);
 	~Array();
 	Array& operator=(const Array&);
