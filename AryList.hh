@@ -63,4 +63,21 @@ class Str_Array : public Array{
 	void for_each_print();
 };
 
+template <typename t>
+class TL_Array : public Array{
+    private:
+	t* tl_ary_list_p;
+
+    public:
+	TL_Array();
+	~TL_Array();
+	TL_Array(const TL_Array&);
+	TL_Array& operator=(const TL_Array&);
+
+        int get(unsigned int idx);
+	void put(unsigned int idx, t value);
+	int swap_list(unsigned int idx1, unsigned int idx2);
+	void for_each_print();
+};
+
 #endif /* __ARYLIST_HH__ */

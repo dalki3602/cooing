@@ -88,6 +88,9 @@ int main(){
 	i->for_each_print();  
     }
 #endif
+
+    TL_Array <int> int_test_ary;
+
     return 0; 
 }
 
